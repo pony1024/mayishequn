@@ -1,0 +1,77 @@
+<include file="Public:head" title="个人主页"/>
+        <div class="qr-head">
+            <div class="qr-user-top">
+                <img src="__PUBLIC__/images/topbg.jpg" class="bg">
+                <div class="qr-user-data layui-hide-xs">
+                    <div class="layui-row">
+                        <div class="layui-col-md-offset1 layui-col-md1">
+                            <p>二维码</p>
+                            <p>{$userinfo.qrcount}</p>
+                        </div>
+                        <div class="layui-col-md-offset1 layui-col-md1">
+                            <p>码币</p>
+                            <p>{$userinfo.coin}</p>
+                        </div>
+                        <div class="layui-col-md-offset4 layui-col-md1">
+                            <p>点赞</p>
+                            <p>{$userinfo.zan}</p>
+                        </div>
+                        <div class="layui-col-md-offset1 layui-col-md1">
+                            <p>热度</p>
+                            <p>{$userinfo.see}</p></div>
+                    </div>
+                </div>
+                <div class="qr-user-info">
+                    <img src="__PUBLIC__/images/cover.jpg" class="face">
+                    <p class="nickname">{$userinfo.name}</p>
+                    <p class="jianjie">{$userinfo.remark}</p>
+                    <div class="qr-user-menu">
+                        <ul class="layui-nav" style="background: #fff;">
+                            <li class="layui-nav-item layui-this" style="color: #ccc!important;">
+                                <a href="">二维码</a>
+                            </li>
+                            <if condition="$userinfo[id] eq session('memberid')">
+                                <li class="layui-nav-item">
+                                    <a href="">动态</a>
+                                </li>
+                                <li class="layui-nav-item">
+                                    <a href="">消费记录</a>
+                                </li>
+                                <li class="layui-nav-item">
+                                    <a href="">设置</a>
+                                </li>
+                            </if>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="qr-content">
+            <div class="qr-block layui-row layui-col-space20">
+                <if condition="sizeof($qrdata) gt 0">
+                    <foreach name="qrdata" item="data">
+                    <div class="layui-col-xs6 layui-col-sm3">
+                        <div class="layui-card">
+                            <div class="layui-card-body cover">
+                                <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
+                            </div>
+                            <div class="layui-card-body">
+                                <p class="card-title"><a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <span class="card-area">{$data.city}</span>{$data.title}</a></p>
+                                <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
+                                <hr>
+                                <div class="layui-row">
+                                    <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                                    <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </foreach>
+                    <else/>
+                    <center>
+                        <img src="__PUBLIC__/images/nocontent.png" alt="">
+                    </center>
+                </if>
+            </div>
+        </div>
+<include file="Public:foot"/>

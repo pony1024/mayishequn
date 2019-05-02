@@ -1,0 +1,108 @@
+<include file="Public:head" title="区域查询"/>
+<div class="qr-content">
+    <form action="" id="areaform">
+        <input type="hidden" name="areaid" value="{:I('get.areaid')}"/>
+        <input type="hidden" name="menuid" value="{:I('get.menuid')}"/>
+        <input type="hidden" name="qr_typeid" value="{:I('get.qr_typeid')}"/>
+    </form>
+    <div class="qr-block sort">
+        <span>地区:</span>
+        <ul class="area">
+            <li id="allarea">全部</li>
+            <foreach name="area" item="vo">
+                <li id="area{$vo.id}" data="{$vo.id}">{$vo.name}</li>
+            </foreach>
+        </ul>
+        <span>菜单:</span>
+        <ul class="menu">
+            <li id="allmenu">全部</li>
+            <foreach name="menu" item="vo">
+                <li id="menu{$vo.id}" data="{$vo.id}">{$vo.name}</li>
+            </foreach>
+        </ul>
+        <span>分类:</span>
+        <ul class="qr_type">
+            <li id="allqr_type">全部</li>
+            <foreach name="qr_typemenu" item="vo">
+                <li id="qr_type{$vo.id}" data="{$vo.id}">{$vo.name}</li>
+            </foreach>
+        </ul>
+    </div>
+
+    <div class="qr-block tuijian layui-row layui-col-space20">
+        <if condition="sizeof($qrdata) gt 0">
+            <foreach name="qrdata" item="data">
+            <div class="layui-col-xs6 layui-col-sm3">
+                <div class="layui-card">
+                    <div class="layui-card-body cover">
+                        <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
+                    </div>
+                    <div class="layui-card-body">
+                        <p class="card-title"><a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <span class="card-area">{$data.city}</span>{$data.title}</a></p>
+                        <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
+                        <hr>
+                        <div class="layui-row">
+                            <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                            <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </foreach>
+            <else/>
+            <center>
+                <img src="__PUBLIC__/images/nocontent.png" alt="">
+            </center>
+        </if>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function(){
+        layui.use('jquery', function(){
+            var $ = layui.jquery;
+            var areaid = "{:I('get.areaid')}";
+            var menuid = "{:I('get.menuid')}";
+            var qr_typeid = "{:I('get.qr_typeid')}";
+            var area = $('.area');
+            var menu = $('.menu');
+            var qr_type = $('.qr_type');
+            if(areaid!=""){
+                area.find('li').removeClass('active');
+                area.find('#area'+areaid).addClass('active');
+            }else{
+                area.find('#allarea').addClass('active');
+            }
+            if(menuid!=""){
+                menu.find('li').removeClass('active');
+                menu.find('#menu'+menuid).addClass('active');
+            }else{
+                menu.find('#allmenu').addClass('active');
+            }
+            if(qr_typeid!=""){
+                qr_type.find('li').removeClass('active');
+                qr_type.find('#qr_type'+qr_typeid).addClass('active');
+            }else{
+                qr_type.find('#allqr_type').addClass('active');
+            }
+            area.find('li').on("click",function () {
+                var id = $(this).attr('data');
+                $('input[name=areaid]').val(id);
+                $('#areaform').submit();
+            })
+            menu.find('li').on("click",function () {
+                var id = $(this).attr('data');
+                $('input[name=menuid]').val(id);
+                $('input[name=qr_typeid]').val('');
+                $('#areaform').submit();
+            })
+            qr_type.find('li').on("click",function () {
+                var id = $(this).attr('data');
+                $('input[name=qr_typeid]').val(id);
+                $('#areaform').submit();
+            })
+        });
+    }
+</script>
+<include file="Public:foot"/>

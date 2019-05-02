@@ -1,0 +1,24 @@
+<include file="Public:head" title="社区"/>
+<div class="qr-content">
+    <center>
+        <img src="__PUBLIC__/images/qidai.png"  width="100%">
+    </center>
+</div>
+
+
+<script>
+    window.onload = function(){
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%' //设置容器宽度
+                ,height:'350'
+                ,arrow: 'hover' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+            });
+        });
+    }
+</script>
+<include file="Public:foot"/>

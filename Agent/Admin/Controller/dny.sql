@@ -1,0 +1,11 @@
+ insert into country(name,pid) values('越南','1');
+ insert into country(name,pid) values('老挝','1');
+ insert into country(name,pid) values('柬埔寨','1');
+ insert into country(name,pid) values('泰国','1');
+ insert into country(name,pid) values('缅甸','1');
+ insert into country(name,pid) values('马来西亚','1');
+ insert into country(name,pid) values('新加坡','1');
+ insert into country(name,pid) values('印度尼西亚','1');
+ insert into country(name,pid) values('文莱','1');
+ insert into country(name,pid) values('菲律宾','1');
+ insert into country(name,pid) values('东帝汶','1');

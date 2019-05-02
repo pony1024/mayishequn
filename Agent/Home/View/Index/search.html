@@ -1,0 +1,51 @@
+<include file="Public:head" title="搜索"/>
+<div class="qr-content">
+    <div class="lunbo">
+        <div class="layui-carousel" id="test1">
+            <div carousel-item>
+                <div><img src="https://img.zcool.cn/community/0119e45cc591c3a801214168584aad.jpg@1380w" alt=""></div>
+                <div><img src="https://img.zcool.cn/community/01eae85cc595cba80121416891d01c.jpg@1380w" alt=""></div>
+                <div><img src="https://img.zcool.cn/community/0152725cc65e4aa801208f8bc130ec.jpg@1380w" alt=""></div>
+                <div><img src="https://img.zcool.cn/community/01a4d85cc595b4a801208f8b05912b.jpg@1380w" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="qr-block tuijian layui-row layui-col-space20">
+        <div class="layui-col-xs6 layui-col-sm3">
+            <div class="layui-card">
+                <div class="layui-card-body cover">
+                    <img src="https://img.zcool.cn/community/01b24f5cc2a748a801208f8b78adfb.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt="">
+                </div>
+                <div class="layui-card-body">
+                    <span class="top"></span>
+                    <p class="card-title">乌鸦喝水三集连播</p>
+                    <p class="card-type">微信群-宝妈</p>
+                    <hr>
+                    <div class="layui-row">
+                        <span class="card-username layui-col-sm6"><i class="layui-icon layui-icon-username"></i>xiaoming</span>
+                        <span class="card-date layui-hide-xs layui-col-sm6">两天前</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function(){
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%' //设置容器宽度
+                ,height:'350'
+                ,arrow: 'hover' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+            });
+        });
+    }
+</script>
+<include file="Public:foot"/>

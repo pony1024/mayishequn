@@ -1,0 +1,126 @@
+<include file="Public:head" title="{$qrcode.title}"/>
+<div class="qr-content">
+    <div class="qr-block layui-row layui-col-space20">
+        <div class="qr-view-left layui-col-sm8">
+            <div class="qr-view-left-top layui-row">
+                <div class="qr-view-img layui-col-xs12 layui-col-sm6">
+                    <div class="layui-tab layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">封面</li>
+                            <li>二维码</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show qr-tab-cover">
+                                <center>
+                                    <img src="{$qrcode.cover}" width="100%" alt="">
+                                    <img src="__PUBLIC__/images/jizan.png" width="100%" class="qr-jizan">
+                                </center>
+                            </div>
+                            <div class="layui-tab-item"><center><img src="{$qrcode.qrcode}" width="100%" alt=""></center></div>
+                        </div>
+                    </div>
+                    <div class="qr-view-bar">
+                        <div class="layui-col-xs3 layui-col-xs-offset3 layui-col-sm3 layui-col-sm-offset3"><i class="layui-icon layui-icon-fire" style="color: #fe6977"></i> {$qrcode[see]+1}</div>
+                        <div  class="layui-col-xs3 layui-col-sm3"><i class="layui-icon layui-icon-praise <if condition='$qrcode[iszan]'>iszan</if>"></i> <span class="qr-zan">{$qrcode[zan]}</span></div>
+                    </div>
+                </div>
+                <div class="qr-view-info layui-col-xs12 layui-col-sm6">
+                    <h1>{$qrcode.title}</h1>
+                    <table class="layui-table" lay-even="" lay-skin="nob">
+                        <tr>
+                            <td>分类</td>
+                            <td>{$qrcode.menu}-{$qrcode.app_type}-{$qrcode.qr_type}</td>
+                        </tr>
+                        <tr>
+                            <td>地区</td>
+                            <td>{$qrcode.area}-{$qrcode.country}-{$qrcode.city}</td>
+                        </tr>
+                        <tr>
+                            <td>联系方式</td>
+                            <td>{$qrcode.touid}</td>
+                        </tr>
+                        <tr>
+                            <td>会员</td>
+                            <td>{$qrcode.nickname}</td>
+                        </tr>
+                        <tr>
+                            <td>发布时间</td>
+                            <td>{:datef($qrcode[create_time])}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">简介:</td>
+                        </tr>
+                        <tr >
+                            <td colspan="2">{$qrcode.content}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="qr-view-left-bottom layui-row">
+                <div class="layui-col-xs12 layui-col-sm12">
+                    <!--PC和WAP自适应版-->
+                    <div id="SOHUCS" ></div>
+                </div>
+            </div>
+        </div>
+        <div class="qr-view-right layui-col-sm4">
+            <div class="qr-block-title">
+                <i class="layui-icon layui-icon-component"></i> {$qrcode.city}同城
+            </div>
+            <div class="qr-block layui-row layui-col-space20">
+                <if condition="sizeof($qrdata) gt 0">
+                    <foreach name="qrdata" item="data">
+                        <div class="layui-col-xs6 layui-col-sm12">
+                            <div class="layui-card">
+                                <div class="layui-card-body cover">
+                                    <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
+                                </div>
+                                <div class="layui-card-body">
+                                    <p class="card-title"><a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <span class="card-area">{$data.city}</span>{$data.title}</a></p>
+                                    <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
+                                    <hr>
+                                    <div class="layui-row">
+                                        <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                                        <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                    <else/>
+                    <center>
+                        <img src="__PUBLIC__/images/nocontent.png" alt="">
+                    </center>
+                </if>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function(){
+        layui.use('jquery', function(){
+            var $ = layui.jquery;
+            $('.layui-icon-praise').on('click',function () {
+                if(!$(this).hasClass('iszan')){
+                    $(this).addClass('iszan');
+                    $('.qr-zan').html(parseInt($('.qr-zan').html())+1);;
+                    $.ajax({
+                        url:"{:U('Qrcode/zan',['id'=>$qrcode[id]])}",
+                        success:function (res) {
+                            if(!!res.success){
+                            }else{
+                                layer.msg(res.msg);
+                            }
+                        }
+                    })
+                }else{
+                    layer.msg('请不要重复点赞');
+                }
+            })
+        });
+    }
+</script>
+<include file="Public:foot"/>

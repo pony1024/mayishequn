@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>[title] - {:C('sitename')} - {:C('jieshao')}</title>
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/layui/global.css">
+</head>
+<body>
+<div class="layui-header layui-bg-green layui-hide-xs">
+    <div class="qr-content layui-row">
+        <div class="layui-logo layui-col-sm2">
+            🐜蚂蚁社群
+        </div>
+        <ul class="layui-nav layui-layout layui-bg-green  layui-col-sm7 layui-col-md7">
+            <li class="layui-nav-item">
+                <a href="{:U('Index/index')}">首页</a>
+            </li>
+            <foreach name="menu" item="vo">
+                <li class="layui-nav-item">
+                    <a href="{:U('Qrcode/qrlist',['menuid'=>$vo['id']])}">{$vo.name}</a>
+                    <if condition="$vo['submenu'] neq ''">
+                        <dl class="layui-nav-child">
+                            <foreach name="vo.submenu" item="item">
+                                <dd><a href="{:U('Qrcode/qrlist',['app_type'=>$item['id']])}">{$item.name}</a></dd>
+                            </foreach>
+                        </dl>
+                    </if>
+                </li>
+            </foreach>
+            <li class="layui-nav-item">
+                <a href="{:U('Qrcode/area')}">国家</a>
+                <dl class="layui-nav-child">
+                <foreach name="area" item="item">
+                    <dd><a href="{:U('Qrcode/area',['areaid'=>$item[id]])}">{$item.name}</a></dd>
+                </foreach>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="{:U('Sns/index')}">社区</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout layui-bg-green layui-hide-sm layui-show-md-block layui-col-md3">
+            <li class="layui-nav-item"><a class="qr-icon" href=""><i class="layui-icon layui-icon-search"></i></a></li>
+            <li class="layui-nav-item"><a class="qr-icon" href="{:U('Qrcode/create')}"><i class="layui-icon layui-icon-release"></i></a></li>
+            <if condition="session('memberid') neq ''">
+                <li class="layui-nav-item"><a  href="{:U('User/index')}">{:session('nickname')}</a></li>
+                <li class="layui-nav-item"><a  href="{:U('Login/logout')}">注销</a></li>
+                <else/>
+                <li class="layui-nav-item"><a  href="{:U('Login/index')}">登录</a></li>
+                <li class="layui-nav-item"><a  href="{:U('Login/register')}">注册</a></li>
+            </if>
+        </ul>
+    </div>
+
+</div>
+<div class="layui-header layui-row layui-bg-green layui-hide-sm">
+    <ul class="layui-nav layui-layout layui-bg-green layui-col-xs2">
+        <li class="layui-nav-item">
+            <a class="qr-icon" href="javascript:;"><i class="layui-icon layui-icon-search"></i></a>
+        </li>
+    </ul>
+    <div class="layui-logo layui-col-xs8">
+            [title]
+    </div>
+    <ul class="layui-nav layui-layout-right layui-bg-green  layui-col-xs2">
+        <li class="layui-nav-item" style="float: right">
+            <a class="qr-icon" href="javascript:right();" style="padding: 0"><i class="layui-icon layui-icon-shrink-right"></i></a>
+        </li>
+    </ul>
+
+</div>
+<div class="qr-right-menu layui-hide-sm layui-show-xs-block">
+    <table  class="layui-table" lay-even lay-skin="line" lay-size="lg">
+        <colgroup>
+            <col>
+        </colgroup>
+        <tbody>
+        <foreach name="menu" item="vo">
+            <tr>
+                <td><a href="{:U('Qrcode/qrlist',['menuid'=>$vo['id']])}">{$vo.name}</a></td>
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+</div>
+<script>
+    var right = function(){
+        document.querySelector(".qr-right-menu").classList.toggle("active");
+    }
+</script>

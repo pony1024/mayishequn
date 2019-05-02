@@ -1,0 +1,88 @@
+<include file="Public:head" title="{$pagetitle}"/>
+<div class="qr-content">
+    <form action="" id="areaform">
+        <input type="hidden" name="menuid" value="{$menuid}"/>
+        <input type="hidden" name="app_type" value="{:I('get.app_type')}"/>
+        <input type="hidden" name="qr_type" value="{:I('get.qr_type')}"/>
+    </form>
+    <div class="qr-block sort">
+        <span>媒体:</span>
+        <ul class="app_type">
+            <li id="allapp_type">全部</li>
+            <foreach name="app_type" item="vo">
+                <li id="app_type{$key}" data="{$key}">{$vo}</li>
+            </foreach>
+        </ul>
+        <span>分类:</span>
+        <ul class="qr_type">
+            <li id="allqr_type">全部</li>
+            <foreach name="qr_type" item="vo">
+                <li id="qr_type{$key}" data="{$key}">{$vo}</li>
+            </foreach>
+        </ul>
+    </div>
+
+    <div class="qr-block layui-row layui-col-space20">
+        <if condition="sizeof($qrdata) gt 0">
+            <foreach name="qrdata" item="data">
+            <div class="layui-col-xs6 layui-col-sm3">
+                <div class="layui-card">
+                    <div class="layui-card-body cover">
+                        <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
+                    </div>
+                    <div class="layui-card-body">
+                        <p class="card-title"><a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <span class="card-area">{$data.city}</span>{$data.title}</a></p>
+                        <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
+                        <hr>
+                        <div class="layui-row">
+                            <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                            <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </foreach>
+            <else/>
+            <center>
+                <img src="__PUBLIC__/images/nocontent.png" alt="">
+            </center>
+        </if>
+    </div>
+    <div class="qr-block page">{$page}</div>
+</div>
+
+
+<script>
+    window.onload = function(){
+        layui.use('jquery', function(){
+            var $ = layui.jquery;
+            var app_typeid = "{:I('get.app_type')}";
+            var qr_typeid = "{:I('get.qr_type')}";
+            var app_type = $('.app_type');
+            var qr_type = $('.qr_type');
+            if(app_typeid!=""){
+                app_type.find('li').removeClass('active');
+                app_type.find('#app_type'+app_typeid).addClass('active');
+            }else{
+                app_type.find('#allapp_type').addClass('active');
+            }
+            if(qr_typeid!=""){
+                qr_type.find('li').removeClass('active');
+                qr_type.find('#qr_type'+qr_typeid).addClass('active');
+            }else{
+                qr_type.find('#allqr_type').addClass('active');
+            }
+            app_type.find('li').on("click",function () {
+                var id = $(this).attr('data');
+                $('input[name=app_type]').val(id);
+                $('#areaform').submit();
+            })
+            qr_type.find('li').on("click",function () {
+                var id = $(this).attr('data');
+                $('input[name=qr_type]').val(id);
+                $('#areaform').submit();
+            })
+        });
+    }
+</script>
+<include file="Public:foot"/>

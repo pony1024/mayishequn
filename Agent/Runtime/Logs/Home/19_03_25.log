@@ -1,0 +1,575 @@
+[ 2019-03-25T18:05:47+08:00 ] 127.0.0.1 /index.php/Home/Index/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000567s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000607s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000636s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000037s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000061s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007852s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007878s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000614s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000635s ]
+
+[ 2019-03-25T18:05:50+08:00 ] 127.0.0.1 /index.php/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000243s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000266s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000294s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000029s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000061s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003704s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003731s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000138s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000159s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000680s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000704s ]
+
+[ 2019-03-25T18:05:57+08:00 ] 127.0.0.1 /index.php/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000227s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000384s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000409s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0083s ]
+SQL: SELECT * FROM `manager` WHERE `user` = 'admin' AND `pwd` = 'admin' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0079s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508357','Login/index','登录','POST','{\"username\":\"admin\",\"password\":\"admin\"}','AJAX','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Login/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','登录失败') [ RunTime:0.0044s ]
+
+[ 2019-03-25T18:05:59+08:00 ] 127.0.0.1 /index.php/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000225s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000236s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000261s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `manager` WHERE `user` = 'admin' AND `pwd` = 'admin' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0028s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508359','Login/index','登录','POST','{\"username\":\"admin\",\"password\":\"admin\"}','AJAX','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Login/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','登录失败') [ RunTime:0.0042s ]
+
+[ 2019-03-25T18:06:05+08:00 ] 127.0.0.1 /index.php/Home/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000256s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `manager` WHERE `user` = 'admin' AND `pwd` = '123456' LIMIT 1   [ RunTime:0.0002s ]
+SQL: UPDATE `manager` SET `lastip`='127.0.0.1',`lasttime`='1553508365',`dex`='9' WHERE `user` = 'admin' AND `pwd` = '123456' [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0030s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508365','Login/index','登录','POST','{\"username\":\"admin\",\"password\":\"123456\"}','AJAX','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Login/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','登录成功') [ RunTime:0.0044s ]
+
+[ 2019-03-25T18:06:06+08:00 ] 127.0.0.1 /index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000196s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000246s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000273s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Index/index' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = null LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0027s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508366','Index/index',NULL,'GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Login/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0044s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000028s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000051s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005454s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005481s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000230s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000251s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000331s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000354s ]
+
+[ 2019-03-25T18:06:07+08:00 ] 127.0.0.1 /index.php/Home/Index/welcome.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000253s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000333s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000371s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Index/welcome' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = null LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0025s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508367','Index/welcome',NULL,'GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `member` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `member`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000026s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000050s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003592s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003622s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000133s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000153s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000241s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000263s ]
+
+[ 2019-03-25T18:06:12+08:00 ] 127.0.0.1 /index.php/Home/Order/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000293s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000279s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Order/index' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0025s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508372','Order/index','订单列表','GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0047s ]
+SQL: SHOW COLUMNS FROM `orders` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `orders`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000033s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000056s ]
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: log D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 78 行.
+NOTIC: [8] Undefined variable: page D:\code\payAgent\Agent\Runtime\Cache\Home\7638aa19c0fa0f54a6737687daac2a59.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004542s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004568s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000134s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000253s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000275s ]
+
+[ 2019-03-25T18:06:18+08:00 ] 127.0.0.1 /index.php/Home/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000191s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000249s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000276s ]
+NOTIC: [2048] Declaration of Home\Controller\UserController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') D:\code\payAgent\Agent\Home\Controller\UserController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'User/index' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0029s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508376','User/index','代理列表','GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0045s ]
+SQL: SHOW COLUMNS FROM `member` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `member`  [ RunTime:0.0001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `member` LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000079s ]
+NOTIC: [8] Undefined variable: time D:\code\payAgent\Agent\Runtime\Cache\Home\0ed7873c31741712dcc88bed1a8d3049.php 第 35 行.
+NOTIC: [8] Undefined variable: time D:\code\payAgent\Agent\Runtime\Cache\Home\0ed7873c31741712dcc88bed1a8d3049.php 第 38 行.
+NOTIC: [8] Undefined variable: user D:\code\payAgent\Agent\Runtime\Cache\Home\0ed7873c31741712dcc88bed1a8d3049.php 第 41 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008525s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008561s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000143s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000163s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000247s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000270s ]
+
+[ 2019-03-25T18:06:21+08:00 ] 127.0.0.1 /index.php/Home/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000233s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000266s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000295s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Admin/index' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0028s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508381','Admin/index','管理员列表','GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0048s ]
+SQL: SELECT * FROM `manager`  [ RunTime:0.0001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `manager` LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `id`,`name` FROM `auth_role`  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000065s ]
+NOTIC: [8] Undefined variable: time D:\code\payAgent\Agent\Runtime\Cache\Home\71b203097cf0e8d703c7f0ffe5daf581.php 第 35 行.
+NOTIC: [8] Undefined variable: time D:\code\payAgent\Agent\Runtime\Cache\Home\71b203097cf0e8d703c7f0ffe5daf581.php 第 38 行.
+NOTIC: [8] Undefined variable: user D:\code\payAgent\Agent\Runtime\Cache\Home\71b203097cf0e8d703c7f0ffe5daf581.php 第 41 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006832s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006855s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000138s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000158s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000245s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000269s ]
+
+[ 2019-03-25T18:06:33+08:00 ] 127.0.0.1 /index.php/Home/Admin/role.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000198s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000242s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000268s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Admin/role' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0029s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508393','Admin/role','角色管理','GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0045s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `auth_role` LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_role`  [ RunTime:0.0001s ]
+SQL: SELECT `name` FROM `auth_rule` WHERE `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `auth_rule` WHERE `id` IN ('1','6','18','19','20','2','16','3','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `auth_rule` WHERE `id` IN ('2','3')  [ RunTime:0.0001s ]
+SQL: SELECT `name` FROM `auth_rule` WHERE `id` IN ('1','6','17')  [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000030s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000054s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004270s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004298s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000134s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000249s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000271s ]
+
+[ 2019-03-25T18:06:35+08:00 ] 127.0.0.1 /index.php/Home/Admin/cate.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000187s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000382s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000444s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Admin/cate' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0026s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508395','Admin/cate','权限分类','GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0044s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1'  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000031s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000055s ]
+NOTIC: [8] Undefined variable: count D:\code\payAgent\Agent\Runtime\Cache\Home\649dfef79ee5dc28f1c53c6d404ac139.php 第 45 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004240s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004264s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000133s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000153s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000242s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000267s ]
+
+[ 2019-03-25T18:06:37+08:00 ] 127.0.0.1 /index.php/Home/Admin/rule.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000186s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000257s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'Admin/rule' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0026s ]
+SQL: INSERT INTO `admin_log` (`time`,`url`,`name`,`method`,`args`,`isajax`,`username`,`ip`,`referer`,`ua`,`msg`) VALUES ('1553508397','Admin/rule','权限管理','GET','[]','WEB','admin','127.0.0.1','http://www.ag.cc/index.php/Home/Index/index.html','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36','正常') [ RunTime:0.0046s ]
+SQL: SELECT `id`,`name` FROM `auth_rule` WHERE `level` = '1'  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` > '1'  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000032s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000054s ]
+NOTIC: [8] Undefined variable: count D:\code\payAgent\Agent\Runtime\Cache\Home\50a4ea5674b42b24bbdac420d9945980.php 第 58 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004651s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004676s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000131s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000151s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000303s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000325s ]
+
+[ 2019-03-25T18:06:41+08:00 ] 127.0.0.1 /index.php/Home/System/logs.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000199s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000239s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000265s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'System/logs' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0027s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_log` LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `admin_log` ORDER BY id desc LIMIT 0,20   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000032s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000063s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004428s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004456s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000143s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000163s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000248s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000272s ]
+
+[ 2019-03-25T18:07:04+08:00 ] 127.0.0.1 /index.php/Home/System/logs/p/9.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000195s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000254s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000281s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'System/logs' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_log` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `admin_log` ORDER BY id desc LIMIT 160,20   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000029s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000053s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003931s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003960s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000136s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000156s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000245s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000268s ]
+
+[ 2019-03-25T18:07:11+08:00 ] 127.0.0.1 /index.php/Home/System/logs/p/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000005s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000188s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000240s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000265s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'System/logs' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0028s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_log` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `admin_log` ORDER BY id desc LIMIT 180,20   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000031s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000054s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003996s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004024s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000134s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000246s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000270s ]
+
+[ 2019-03-25T18:07:15+08:00 ] 127.0.0.1 /index.php/Home/System/logs/p/19.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000200s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000247s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000274s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'System/logs' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_log` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `admin_log` ORDER BY id desc LIMIT 360,20   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000031s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000056s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003883s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003910s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000134s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000252s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000277s ]
+
+[ 2019-03-25T18:07:21+08:00 ] 127.0.0.1 /index.php/Home/System/logs/p/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000188s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000238s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000264s ]
+SQL: SHOW COLUMNS FROM `manager` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `manager` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_role` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `auth_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `auth_rule` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '1' AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 1 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 2 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 3 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 4 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `level` = '2' AND `pid` = 5 AND `id` IN ('1','6','7','17','18','19','20','2','16','3','4','8','9','10','11','12','13','14','5','15')  [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `rules` = 'System/logs' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `auth_rule` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `admin_log` [ RunTime:0.0028s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_log` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `admin_log` ORDER BY id desc LIMIT 0,20   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000031s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000067s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003924s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003950s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000135s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000155s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000241s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000265s ]
+

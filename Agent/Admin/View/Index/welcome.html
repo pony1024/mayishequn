@@ -1,0 +1,75 @@
+<include file="Public:head"/>
+        <div class="x-body">
+            <blockquote class="layui-elem-quote">
+                <p>登录次数：{$Think.session.dex} </p>
+                <p>上次登录IP：{$Think.session.lastip}  上次登录时间：{$Think.session.lasttime|date="Y-m-d H:i:s",###}</p>
+            </blockquote>
+
+            <fieldset class="layui-elem-field layui-field-title site-title">
+              <legend><a name="default">信息统计</a></legend>
+            </fieldset>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>统计</th>
+                        <th>代理商数</th>
+                        <th>充值笔数</th>
+                        <th>充值金额</th>
+                        <th>在线充值金额</th>
+                        <th>人工入款金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>总数</td>
+                        <td>{$agent.count}</td>
+                        <td>{$orders.count}</td>
+                        <td>{$money.count}</td>
+                        <td>{$online.count}</td>
+                        <td>{$offline.count}</td>
+                    </tr>
+                    <tr>
+                        <td>今日</td>
+                        <td>{$agent.today}</td>
+                        <td>{$orders.today}</td>
+                        <td>{$money.today}</td>
+                        <td>{$online.today}</td>
+                        <td>{$offline.today}</td>
+                    </tr>
+                    <tr>
+                        <td>昨日</td>
+                        <td>{$agent.yesterday}</td>
+                        <td>{$orders.yesterday}</td>
+                        <td>{$money.yesterday}</td>
+                        <td>{$online.yesterday}</td>
+                        <td>{$offline.yesterday}</td>
+                    </tr>
+                    <tr>
+                        <td>本周</td>
+                        <td>{$agent.curweek}</td>
+                        <td>{$orders.curweek}</td>
+                        <td>{$money.curweek}</td>
+                        <td>{$online.curweek}</td>
+                        <td>{$offline.curweek}</td>
+                    </tr>
+                    <tr>
+                        <td>本月</td>
+                        <td>{$agent.curmonth}</td>
+                        <td>{$orders.curmonth}</td>
+                        <td>{$money.curmonth}</td>
+                        <td>{$online.curmonth}</td>
+                        <td>{$offline.curmonth}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-footer footer " style="position: absolute;bottom: 0px;width:100%;">
+            <div class="layui-main">
+                <p>
+                    <a href="/">
+                        Copyright ©2007 - 2019 YHT All Rights Reserved.
+                    </a>
+                </p>
+            </div>
+        </div>
+    <include file="Public:foot"/>

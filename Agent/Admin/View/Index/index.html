@@ -1,0 +1,69 @@
+<include file="Public:head"/>
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header header header-demo">
+                <div class="layui-main">
+                    <a class="logo" href="javascript:;">
+                        易汇通代理商管理系统
+                    </a>
+                    <ul class="layui-nav" lay-filter="">
+                      <li class="layui-nav-item">
+                        <a href="javascript:;">{$Think.session.username}</a>
+                        <!--<dl class="layui-nav-child"> &lt;!&ndash; 二级菜单 &ndash;&gt;
+                          <dd><a href="">个人信息</a></dd>
+                          <dd><a href="">切换帐号</a></dd>
+                          <dd><a href="__PUBLIC__/login.html">退出</a></dd>
+                        </dl>-->
+                      </li>
+                      <!-- <li class="layui-nav-item">
+                        <a href="" title="消息">
+                            <i class="layui-icon" style="top: 1px;">&#xe63a;</i>
+                        </a>
+                        </li> -->
+                      <li class="layui-nav-item x-index"><a href="{:U('Login/logout')}">注销</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="layui-side layui-bg-black x-side">
+                <div class="layui-side-scroll">
+                    <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
+                        <foreach name="menu" item="vo">
+                            <li class="layui-nav-item">
+                                <a class="javascript:;" href="javascript:;">
+                                    <i class="{$vo.classname}" aria-hidden="true"></i><cite>{$vo.name}</cite>
+                                </a>
+
+                                <dl class="layui-nav-child">
+                                    <foreach name="vo.childen" item="child">
+                                        <dd class="">
+                                            <a href="javascript:;" _href="{$child.rules|U}">
+                                                <cite>{$child.name}</cite>
+                                            </a>
+                                        </dd>
+                                    </foreach>
+                                </dl>
+                            </li>
+                        </foreach>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="layui-tab layui-tab-card site-demo-title x-main" lay-filter="x-tab" lay-allowclose="true">
+                <div class="x-slide_left"></div>
+                <ul class="layui-tab-title">
+                    <li class="layui-this">
+                        我的桌面
+                        <i class="layui-icon layui-unselect layui-tab-close">ဆ</i>
+                    </li>
+                </ul>
+                <div class="layui-tab-content site-demo site-demo-body">
+                    <div class="layui-tab-item layui-show">
+                        <iframe frameborder="0" src="{:U('Index/welcome')}" class="x-iframe"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="site-mobile-shade">
+            </div>
+        </div>
+        <script src="__PUBLIC__/js/x-admin.js"></script>
+        <include file="Public:foot"/>

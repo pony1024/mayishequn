@@ -1,0 +1,45 @@
+<script src="__PUBLIC__/layui/layui.all.js"></script>
+<script>
+    var msg = "{:I('get.msg')}";
+    if(msg!=""){
+        layer.msg(decodeURIComponent(msg));
+    }
+</script>
+<div class="qr-footer layui-show-xs-block layui-hide-sm">
+    <ul class="qr-footer-menu">
+        <li><a href="{:U('Index/index')}"><p><i class="layui-icon layui-icon-home"  style="font-size: 20px"></i></p><p>首页</p></a></li>
+        <li><a href="{:U('Qrcode/area')}"><p><i class="layui-icon layui-icon-location"  style="font-size: 20px"></i></p><p>国家</p></a></li>
+        <li class="send"><a href="{:U('Qrcode/create')}"><i class="layui-icon layui-icon-release"  style="font-size: 20px"></i></a></li>
+        <li><a href="{:U('Sns/index')}"><p><i class="layui-icon layui-icon-chat"  style="font-size: 20px"></i></p><p>社区</p></a></li>
+        <li><a href="{:U('User/index')}"><p><i class="layui-icon layui-icon-user"  style="font-size: 20px"></i></p><p>我的</p></a></li>
+    </ul>
+</div>
+<div class="layui-footer" style="margin-top: 24px">
+    <div class="qr-content">
+
+        <div class="layui-row footer-menu layui-hide-xs" style="height: 100px;line-height: 100px">
+            <div class="layui-col-sm3">
+                &nbsp;
+            </div>
+            <div class="layui-col-sm6">
+                <ul>
+                    <li><a href="{:U('About/index',['id'=>'about'])}">关于我们</a></li>
+                    <li><a href="{:U('About/index',['id'=>'userbook'])}">用户协议</a></li>
+                    <li><a href="{:U('About/index',['id'=>'private'])}">隐私政策</a></li>
+                    <li><a href="{:U('About/index',['id'=>'hand'])}">商业合作</a></li>
+                    <li><a href="{:U('About/index',['id'=>'service'])}">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="layui-col-sm3">
+            </div>
+        </div>
+        <fieldset class=" layui-hide-xs"><legend>{:C('sitename')} - 亿万二维码联盟</legend></fieldset>
+        <div class="layui-row">
+            <div class="layui-col-xs12" style="height: 56px;line-height: 56px;text-align: center">
+                Copyright &copy; {:C('sitename')}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

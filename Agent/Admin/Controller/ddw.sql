@@ -1,0 +1,12 @@
+insert into city(name,pid) values('阿伊纳罗','11');
+ insert into city(name,pid) values('包考','11');
+ insert into city(name,pid) values('博博纳罗','11');
+ insert into city(name,pid) values('Cova-Lima','11');
+ insert into city(name,pid) values('帝利','11');
+ insert into city(name,pid) values('埃尔梅拉','11');
+ insert into city(name,pid) values('劳滕','11');
+ insert into city(name,pid) values('利基卡','11');
+ insert into city(name,pid) values('马纳图托','11');
+ insert into city(name,pid) values('马努法伊','11');
+ insert into city(name,pid) values('欧库西','11');
+ insert into city(name,pid) values('维克克','11');

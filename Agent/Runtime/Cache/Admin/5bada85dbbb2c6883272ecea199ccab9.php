@@ -1,0 +1,181 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title><?php echo C('sitename');?>管理系统</title>
+    <meta name="generator" content="VSC" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css" media="screen" id="test">
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            background-color: #535c6f;
+        }
+        .main{
+            position:absolute;
+            left:calc(50% - 180px);
+            top:calc(50% - 320px);
+            display: block;
+            width:360px;
+            height:640px;
+            box-shadow:rgba(0,0,0,0.3) 5px 5px 5px;
+            background-color: #fff;
+        }
+        .main .top{
+            position:absolute;
+            display: block;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:240px;
+            background-color: #272b34;
+            color:#fff;
+        }
+        .main .top .bar{
+            display: block;
+            width:calc(100% - 16px);
+            margin-left:8px;
+            height:20px;
+            line-height: 20px;
+            font-size:10px;
+            display: flex;
+        }
+        .main .top .bar div{
+            display: block;
+            flex:1;
+        }
+        .main .top .logo{
+            display: block;
+            width:160px;
+            height:160px;
+            line-height:160px;
+            margin-left:calc(50% - 80px);
+            text-align: center;
+            font-size: 160px;
+        }
+        .main .body{
+            padding-top: 32px;
+            display: block;
+            width:300px;
+            position: absolute;
+            left:calc(50% - 150px);
+            top:200px;
+            background-color: #fff;
+            border-radius:8px;
+            height:288px;
+            box-shadow:rgba(0,0,0,0.2) 0px 5px 30px;
+        }
+        .main .body i{
+            padding-left:16px ;
+            width:44px;
+            text-align: center;
+            color:#757575;
+        }
+        .main .body input{
+            height:40px;
+            line-height: 40px;
+            width:240px;
+            outline:none;
+            border:none;
+            font-size:16px;
+            margin-left:0px;
+            margin-top:8px;
+            margin-bottom:8px;
+        }
+        .main .body button{
+            background-color: #272b34;
+            border:none;
+            width:240px;
+            height:40px;
+            border-radius:24px;
+            font-size:16px;
+            color:#fff;
+            margin-left:30px;
+            margin-top:16px;
+            outline: none;
+            cursor: pointer;
+        }
+        .main .body button.getpwd{
+            opacity:.8
+        }
+        .main .body button.login:hover{
+            opacity:.8
+        }
+        .main .body button.getpwd:hover{
+            opacity:1
+        }
+        .main .bottom{
+            position:absolute;
+            bottom:0px;
+            width:100%;
+            height:80px;
+            line-height: 80px;
+            text-align: center;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="top">
+        <div class="bar">
+            <div style="text-align:left"><i class="fa fa-signal" aria-hidden="true"></i> <?php echo C('sitename');?> <i class="fa fa-wifi" aria-hidden="true"></i></div>
+            <div style="text-align:center" class="time-now"></div>
+            <div style="text-align:right"><i class="fa fa-battery-full" aria-hidden="true"></i></div>
+        </div>
+        <div class="logo">
+            <i class="fa fa-qrcode" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div class="body">
+        <i class="fa fa-user" aria-hidden="true"></i><input type="text" name="username" value="" placeholder="账号" />
+        <i class="fa fa-key" aria-hidden="true"></i><input type="password" name="password" value="" placeholder="密码" />
+        <button class="login" type="button" value="val">登录</button>
+        <!--<button class="getpwd" type="button" value="val" >找回密码</button>-->
+    </div>
+    <div class="bottom">
+        <?php echo C('sitename');?>管理系统
+    </div>
+</div>
+<script>
+    window.onload=function(){
+        var login = function(){
+            $.ajax({
+                type:"POST",
+                data:"username="+$('[name=username]').val()+"&password="+$('[name=password]').val(),
+                success:function(params) {
+                    if(params.success){
+                        location.href="<?php echo U('Index/index');?>"
+                    }else{
+                        alert(params.msg);
+                    }
+                }
+
+            })
+        }
+        var now = new Date();
+        document.querySelector('.time-now').innerText = now.getHours()+":"+ (now.getMinutes().toString().length>1? now.getMinutes():"0"+now.getMinutes());
+        setInterval(function(){
+            var now = new Date();
+            document.querySelector('.time-now').innerText = now.getHours()+":"+ (now.getMinutes().toString().length>1? now.getMinutes():"0"+now.getMinutes());
+        },1000);
+        $(".login").on("click",function(){
+            login();
+        });
+        $("body").on("keypress",function(e){
+            if(e.keyCode==13){
+                login();
+            }
+        })
+    }
+</script>
+</body>
+</html>

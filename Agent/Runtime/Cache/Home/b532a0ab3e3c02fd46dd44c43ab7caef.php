@@ -1,0 +1,28 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>网站维护中</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background: #0e1134;
+            overflow: hidden;
+        }
+        img{
+            max-width: 1280px;
+            width: 100%;
+            margin-left:50% ;
+            margin-right:-50% ;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+<img src="/Public/images/siteoff.jpg"  alt="">
+</body>
+</html>

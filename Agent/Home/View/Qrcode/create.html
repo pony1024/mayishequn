@@ -1,0 +1,276 @@
+<include file="Public:head" title="发布二维码"/>
+<div class="qr-content">
+    <div class="qr-block qr-block-white" >
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" maxlength="16" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">联系方式</label>
+                <div class="layui-input-block">
+                    <input type="text" name="touid" required  lay-verify="required" placeholder="请输入联系方式" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-inline">
+                    <select name="menuid" lay-verify="required" lay-filter="type1">
+                        <option value=""></option>
+                        <foreach name="menu" item="vo">
+                            <option value="{$vo.id}">{$vo.name}</option>
+                        </foreach>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="app_type" id="app_type" lay-verify="required">
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="qr_type" id="qr_type" lay-verify="required">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">国家</label>
+                <div class="layui-input-inline">
+                    <select name="area" lay-verify="required" lay-filter="area">
+                        <option value=""></option>
+                        <foreach name="area" item="vo">
+                            <option value="{$vo.id}">{$vo.name}</option>
+                        </foreach>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="country" id="country" lay-verify="required" lay-filter="country">
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="city" id="city" lay-verify="required">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <!--<label class="layui-form-label">封面</label>-->
+                <input type="hidden" name="cover" required  lay-verify="required" >
+                <input type="hidden" name="qrcode" required  lay-verify="required" >
+                <div class="layui-row layui-col-space20" style="text-align: center">
+                    <div class="layui-col-xs12 layui-col-sm4 layui-col-md3">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-xs12">
+                                <img src="__PUBLIC__/images/cover.jpg" class="cover" width="200" height="200" alt="">
+                            </div>
+                            <div class="layui-col-xs12" >
+                                <button class="layui-btn" type="button" id="cv-upload" style="width: 200px;"><i class="layui-icon layui-icon-upload"></i> 上传封面</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm4 layui-col-md3">
+                        <div class="layui-row layui-col-space10">
+                            <div class="layui-col-xs12">
+                                <img src="__PUBLIC__/images/qrcode.jpg" class="qrcode" width="200" height="200" alt="">
+                            </div>
+                            <div class="layui-col-xs12">
+                                <button class="layui-btn" type="button" id="qr-upload" style="width: 200px;"><i class="layui-icon layui-icon-upload"></i> 上传二维码</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">置顶</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="switch" lay-skin="switch" lay-filter="dotop">
+                </div>
+            </div>
+            <div class="layui-form-item toptime">
+                <label class="layui-form-label">置顶时间</label>
+                <div class="layui-input-inline">
+                    <input type="number" class="layui-input" name="toptime"  placeholder="置顶时间,单位为小时" value="0">
+                </div>
+                <div class="layui-form-mid layui-word-aux">置顶时间,单位为小时</div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">介绍</label>
+                <div class="layui-input-block">
+                    <textarea name="content" placeholder="请输入内容" lay-verify="required" maxlength="150" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function(){
+        //Demo
+        layui.use(['form','jquery','upload'], function(){
+            var form = layui.form;
+            $ = layui.jquery;
+            var upload = layui.upload;
+            var menu = {:json_encode($menu)};
+            var qr_type = {$qr_type};
+            var area = {$area_submenu};
+            //置顶开关
+            form.on('switch(dotop)', function(data){
+                if(data.elem.checked){
+                    $('.toptime').show();
+                }else{
+                    $('.toptime').hide();
+                }
+            });
+            //选择类型
+            form.on('select(type1)',function (data) {
+                console.log(data.value)
+                $('#app_type').html('');
+                $('#qr_type').html('');
+                for(var o in menu){
+                    if(menu[o].id == data.value){
+                        $('#app_type').append($('<option value=""></option>'))
+                        var submenu = menu[o].submenu;
+                        for (var i in submenu){
+                            $('#app_type').append($('<option value="'+submenu[i].id+'">'+submenu[i].name+'</option>'))
+                        }
+                        form.render('select');
+                        break;
+                    }
+                }
+                for(var o in qr_type){
+                    if(qr_type[o].id == data.value){
+                        $('#qr_type').append($('<option value=""></option>'))
+                        var submenu = qr_type[o].submenu;
+                        for (var i in submenu){
+                            $('#qr_type').append($('<option value="'+submenu[i].id+'">'+submenu[i].name+'</option>'))
+                        }
+                        form.render('select');
+                        break;
+                    }
+                }
+            });
+            //选择区域
+            form.on('select(area)',function (data) {
+                if(data.value==""){
+                    return;
+                }
+                $('#country').html('');
+                var layid = layer.load(2)
+                $.ajax({
+                    url:"{:U('Area/getcountry')}?pid="+data.value,
+                    type:"get",
+                    success:function (data) {
+                        if(!!data.success){
+                            $('#country').append($('<option value=""></option>'))
+                            for (var i in data.msg){
+                                $('#country').append($('<option value="'+data.msg[i].id+'">'+data.msg[i].name+'</option>'))
+                            }
+                            form.render('select');
+                        }else{
+                            layer.msg(data.msg,{icon:2})
+                        }
+                    },
+                    complete:function () {
+                        layer.close(layid);
+                    }
+                })
+            });
+            //选择国家
+            form.on('select(country)',function (data) {
+                if(data.value==""){
+                    return;
+                }
+                $('#city').html('');
+                var layid = layer.load(2)
+                $.ajax({
+                    url:"{:U('Area/getcity')}?pid="+data.value,
+                    type:"get",
+                    success:function (data) {
+                        if(!!data.success){
+                            $('#city').append($('<option value=""></option>'))
+                            for (var i in data.msg){
+                                $('#city').append($('<option value="'+data.msg[i].id+'">'+data.msg[i].name+'</option>'))
+                            }
+                            form.render('select');
+                        }else{
+                            layer.msg(data.msg,{icon:2})
+                        }
+                    },
+                    complete:function () {
+                        layer.close(layid);
+                    }
+                })
+            });
+            upload.render({
+                elem:"#qr-upload",
+                url:"{:U('Upload/index')}",
+                choose:function(){
+                    layid = layer.load(2)
+                },
+                done:function (res) {
+                    layer.close(layid);
+                    if(!!res.file){
+                        var file = res.file;
+                        var path = "/Uploads/"+file.savepath+file.savename;
+                        $('input[name=qrcode]').val(path);
+                        $('.qrcode').attr("src",path);
+                    }else{
+                        layer.msg(res.info,{icon:2})
+                    }
+                },
+                error:function (e) {
+                    layer.close(layid);
+                }
+            });
+            upload.render({
+                elem:"#cv-upload",
+                url:"{:U('Upload/index')}",
+                choose:function(){
+                    layid = layer.load(2)
+                },
+                done:function (res) {
+                    layer.close(layid);
+                    if(!!res.file){
+                        var file = res.file;
+                        var path = "/Uploads/"+file.savepath+file.savename;
+                        $('input[name=cover]').val(path);
+                        $('.cover').attr("src",path);
+                    }else{
+                        layer.msg(res.info,{icon:2})
+                    }
+
+                },
+                error:function (e) {
+                    layer.close(layid);
+                }
+            });
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                //layer.msg(JSON.stringify(data.field));
+                var layid = layer.load(2)
+                $.ajax({
+                    type:"post",
+                    data:data.field,
+                    success:function (data) {
+                        if(!!data.success){
+                            location.href="{:U('User/index')}";
+                        }else{
+                            layer.msg(data.msg,{icon:2})
+                        }
+                    },
+                    complete:function () {
+                        layer.close(layid);
+                    }
+                })
+                return false;
+            });
+        });
+    }
+</script>
+<include file="Public:foot"/>

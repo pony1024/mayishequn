@@ -1,0 +1,86 @@
+<include file="Public:head" title="首页"/>
+<div class="qr-content">
+    <if condition="SC('lunbo') eq '1'">
+        <div class="lunbo">
+            <div class="layui-carousel" id="test1">
+                <div carousel-item>
+                    <foreach name="lunbo" item="tu">
+                        <div><img src="{$tu.img}" alt=""></div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </if>
+
+    <div class="qr-block tuijian layui-row layui-col-space20">
+        <foreach name="topdata" item="data">
+            <div class="layui-col-xs6 layui-col-sm3">
+                <div class="layui-card">
+                    <div class="layui-card-body cover">
+                        <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
+                    </div>
+                    <div class="layui-card-body">
+                        <span class="top"></span>
+                        <p class="card-title"><a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <span class="card-area">{$data.city}</span>{$data.title}</a></p>
+                        <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
+                        <hr>
+                        <div class="layui-row">
+                            <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                            <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </foreach>
+    </div>
+
+    <foreach name="indexdata" item="vo">
+        <div class="qr-block qr-block-title">
+            <i class="layui-icon layui-icon-component"></i> {$vo.name}
+        </div>
+        <div class="qr-block layui-row layui-col-space20">
+            <if condition="sizeof($vo[data]) gt 0">
+                <foreach name="vo.data" item="data">
+                <div class="layui-col-xs6 layui-col-sm3">
+                    <div class="layui-card">
+                        <div class="layui-card-body cover">
+                            <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
+                        </div>
+                        <div class="layui-card-body">
+                            <p class="card-title"><a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <span class="card-area">{$data.city}</span>{$data.title}</a></p>
+                            <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
+                            <hr>
+                            <div class="layui-row">
+                                <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                                <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </foreach>
+                <else/>
+                <center>
+                    <img src="__PUBLIC__/images/nocontent.png" alt="">
+                </center>
+            </if>
+        </div>
+    </foreach>
+</div>
+
+
+<script>
+    window.onload = function(){
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%' //设置容器宽度
+                ,height:'350'
+                ,arrow: 'hover' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+            });
+        });
+    }
+</script>
+<include file="Public:foot"/>
