@@ -1,0 +1,73 @@
+<include file="Public:head" title="设置"/>
+        <include file="Public:userhead" />
+        <div class="qr-content">
+            <div class="qr-block qr-block-white" >
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">昵称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" required  lay-verify="required" placeholder="请输入昵称" autocomplete="off" maxlength="8" class="layui-input" value="{$userinfo.name}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">签名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="remark" required  lay-verify="required" placeholder="请输入签名" autocomplete="off" maxlength="15" class="layui-input"  value="{$userinfo.remark}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="pwd"  placeholder="请输入新密码，留空则不修改" autocomplete="off" maxlength="16" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="repwd" placeholder="请输入新密码，留空则不修改" autocomplete="off" maxlength="16" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+<script>
+    window.onload = function(){
+        //Demo
+        layui.use(['form','jquery','upload'], function(){
+            var form = layui.form;
+            $ = layui.jquery;
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                //layer.msg(JSON.stringify(data.field));
+
+                if($('input[name=pwd]').val()!=""&&$('input[name=pwd]').val()!=$('input[name=repwd]').val()){
+                    layer.msg("两次密码输入不一致",{icon:2});
+                    return false;
+                }
+                var layid = layer.load(2)
+                $.ajax({
+                    type:"post",
+                    data:data.field,
+                    success:function (data) {
+                        if(!!data.success){
+                            history.go(0);
+                        }else{
+                            layer.msg(data.msg,{icon:2})
+                        }
+                    },
+                    complete:function () {
+                        layer.close(layid);
+                    }
+                })
+                return false;
+            });
+        });
+    }
+</script>
+<include file="Public:foot"/>

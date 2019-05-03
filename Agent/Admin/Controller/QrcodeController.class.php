@@ -85,6 +85,17 @@ class QrcodeController extends BaseController {
                         $res["msg"] = "参数错误";
                     }
                     break;
+                case "top":
+                    $select["id"] = I("post.id");
+                    $time = I("post.time");
+                    if($select["id"]!=""&&$time!=""){
+                        $time = time()+(intval($time)*3600);
+                        M("qrcode")->where($select)->setField('top_time',$time);
+                        $res["success"] = true;
+                    }else{
+                        $res["msg"] = "参数错误";
+                    }
+                    break;
                 case "del":
                     $select["id"] = I("post.id");
                     if($select["id"]!=""){

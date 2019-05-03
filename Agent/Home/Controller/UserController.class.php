@@ -2,7 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 class UserController extends BaseController {
-    public function index()//代理管理
+    public function index()//主页
     {
         $uid = I('get.uid');
         $userinfo = [];
@@ -38,6 +38,58 @@ class UserController extends BaseController {
         $this->assign("qrdata",$qrdata);
         $this->assign("userinfo",$userinfo);
         $this->assign("page",$show);
+        $this->display();
+    }
+    public function info()//资料
+    {
+        if(IS_AJAX){
+            $select['id'] = session("memberid");
+            $data['name'] = I("post.name");
+            $data['remark'] = I("post.remark");
+            $res["success"] = false;
+            if(I("post.pwd")!=""){
+                if(preg_match('/[^0-9a-zA-Z_]/', I("post.pwd"))>0){
+                    $res["msg"] = "密码只能包含大小写字母、数字和下划线";
+                }elseif(!(strlen(I("post.pwd"))>5&&strlen(I("post.pwd"))<17)){
+                    $res["msg"] = "密码长度位6-16位";
+                }elseif(!(mb_strlen($data['name'])>0&&mb_strlen($data['name'])<9)){
+                    $res["msg"] = "昵称长度为1-8位";
+                }elseif(!(mb_strlen($data['remark'])>0&&mb_strlen($data['remark'])<16)){
+                    $res["msg"] = "签名长度为1-15位";
+                }else{
+                    $data['pwd'] = I("post.pwd");
+                    M('member')->where($select)->save($data);
+                    $res["success"] = true;
+                }
+            }else{
+                if(!(mb_strlen($data['name'])>0&&mb_strlen($data['name'])<9)){
+                    $res["msg"] = "昵称长度为1-8位";
+                }elseif(!(mb_strlen($data['remark'])>0&&mb_strlen($data['remark'])<16)){
+                    $res["msg"] = "签名长度为1-15位";
+                }else{
+                    M('member')->where($select)->save($data);
+                    $res["success"] = true;
+                }
+
+            }
+
+
+            $this->ajaxReturn($res);
+        }
+        $userinfo = [];
+        $uid=session('memberid');
+        if($uid==""){
+            checkuser();
+        }else{
+            $userinfo = M('member')->where(["id"=>$uid])->find();
+        }
+        if(sizeof($userinfo)==0){
+            errmsg("用户不存在");
+        }
+        $userinfo["qrcount"] = M('qrcode')->where(["memberid"=>$uid])->count();
+        $userinfo["zan"] = intval(M('qrcode')->where(["memberid"=>$uid])->sum('zan'));
+        $userinfo["see"] = intval(M('qrcode')->where(["memberid"=>$uid])->sum('see'));
+        $this->assign("userinfo",$userinfo);
         $this->display();
     }
 }

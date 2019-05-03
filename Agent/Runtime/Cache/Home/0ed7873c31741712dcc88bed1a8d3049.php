@@ -79,50 +79,54 @@
     }
 </script>
         <div class="qr-head">
-            <div class="qr-user-top">
-                <img src="/Public/images/topbg.jpg" class="bg">
-                <div class="qr-user-data layui-hide-xs">
-                    <div class="layui-row">
-                        <div class="layui-col-md-offset1 layui-col-md1">
-                            <p>二维码</p>
-                            <p><?php echo ($userinfo["qrcount"]); ?></p>
-                        </div>
-                        <div class="layui-col-md-offset1 layui-col-md1">
-                            <p>码币</p>
-                            <p><?php echo ($userinfo["coin"]); ?></p>
-                        </div>
-                        <div class="layui-col-md-offset4 layui-col-md1">
-                            <p>点赞</p>
-                            <p><?php echo ($userinfo["zan"]); ?></p>
-                        </div>
-                        <div class="layui-col-md-offset1 layui-col-md1">
-                            <p>热度</p>
-                            <p><?php echo ($userinfo["see"]); ?></p></div>
-                    </div>
+    <div class="qr-user-top">
+        <img src="/Public/images/topbg.jpg" class="bg">
+        <div class="qr-user-data layui-hide-xs">
+            <div class="layui-row">
+                <div class="layui-col-md-offset1 layui-col-md1">
+                    <p>二维码</p>
+                    <p><?php echo ($userinfo["qrcount"]); ?></p>
                 </div>
-                <div class="qr-user-info">
-                    <img src="/Public/images/cover.jpg" class="face">
-                    <p class="nickname"><?php echo ($userinfo["name"]); ?></p>
-                    <p class="jianjie"><?php echo ($userinfo["remark"]); ?></p>
-                    <div class="qr-user-menu">
-                        <ul class="layui-nav" style="background: #fff;">
-                            <li class="layui-nav-item layui-this" style="color: #ccc!important;">
-                                <a href="">二维码</a>
-                            </li>
-                            <?php if($userinfo[id] == session('memberid')): ?><li class="layui-nav-item">
-                                    <a href="">动态</a>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="">消费记录</a>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="">设置</a>
-                                </li><?php endif; ?>
-                        </ul>
-                    </div>
+                <div class="layui-col-md-offset1 layui-col-md1">
+                    <p>码币</p>
+                    <p><?php echo ($userinfo["coin"]); ?></p>
                 </div>
+                <div class="layui-col-md-offset4 layui-col-md1">
+                    <p>点赞</p>
+                    <p><?php echo ($userinfo["zan"]); ?></p>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-md1">
+                    <p>热度</p>
+                    <p><?php echo ($userinfo["see"]); ?></p></div>
             </div>
         </div>
+        <div class="qr-user-info">
+            <img src="/Public/images/cover.jpg" class="face">
+            <p class="nickname"><?php echo ($userinfo["name"]); ?></p>
+            <p class="jianjie"><?php echo ($userinfo["remark"]); ?></p>
+            <div class="qr-user-menu">
+                <ul class="layui-nav" style="background: #fff;">
+                    <li class="layui-nav-item index">
+                        <a href="<?php echo U('User/index');?>">二维码</a>
+                    </li>
+                    <?php if($userinfo[id] == session('memberid')): ?><li class="layui-nav-item msg">
+                            <a href="">动态</a>
+                        </li>
+                        <li class="layui-nav-item orders">
+                            <a href="">消费记录</a>
+                        </li>
+                        <li class="layui-nav-item info">
+                            <a href="<?php echo U('User/info');?>">设置</a>
+                        </li><?php endif; ?>
+                </ul>
+            </div>
+            <script>
+                var action = "<?php echo (ACTION_NAME); ?>";
+                document.querySelector(".layui-nav-item."+action).classList.add("layui-this");
+            </script>
+        </div>
+    </div>
+</div>
         <div class="qr-content">
             <div class="qr-block layui-row layui-col-space20">
                 <?php if(sizeof($qrdata) > 0): if(is_array($qrdata)): foreach($qrdata as $key=>$data): ?><div class="layui-col-xs6 layui-col-sm3">

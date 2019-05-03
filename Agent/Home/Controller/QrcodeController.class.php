@@ -186,6 +186,7 @@ class QrcodeController extends BaseController {
                         $res["msg"] = "非法参数";
                     }
                 }elseif($data["toptime"]==0){
+                    $data["top_time"] = "0";
                     M("qrcode")->data($data)->add();
                     $res["success"] = true;
                 }else{

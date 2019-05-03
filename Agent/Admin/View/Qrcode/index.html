@@ -40,6 +40,7 @@
                         <th>创建时间</th>
                         <th>作者</th>
                         <th>简介</th>
+                        <th>置顶</th>
                         <th>状态</th>
                         <th>操作</th>
                     </tr>
@@ -62,8 +63,15 @@
                             </td>
                             <td><u onclick="layer.alert('{$vo.content}')">查看</u></td>
                             <td>
+                                <if condition="$vo.top_time gt time()">
+                                    <span class="layui-btn layui-btn-success layui-btn-mini">已置顶</span>
+                                    <else/>
+                                    <span class="layui-btn layui-btn-disabled layui-btn-mini">未置顶</span>
+                                </if>
+                            </td>
+                            <td>
                                 <if condition="$vo.status eq 1">
-                                    <span class="layui-btn layui-btn-success layui-btn-mini">成功</span>
+                                    <span class="layui-btn layui-btn-success layui-btn-mini">已发布</span>
                                     <else/>
                                     <span class="layui-btn layui-btn-disabled layui-btn-mini">待审核</span>
                                 </if>
@@ -73,6 +81,11 @@
                                     <a title="通过" href="javascript:;" onclick="qrcode_pass('{$vo.id}')"
                                        style="text-decoration:none">
                                         <i class="fa fa-check-square-o"  aria-hidden="true"></i>
+                                    </a>
+                                    <else/>
+                                    <a title="置顶" href="javascript:;" onclick="qrcode_top('{$vo.id}')"
+                                       style="text-decoration:none">
+                                        <i class="fa fa-level-up"  aria-hidden="true"></i>
                                     </a>
                                 </if>
                                 <a title="删除" href="javascript:;" onclick="qrcode_del('{$vo.id}')"
@@ -139,6 +152,27 @@
                     })
                 });
             }
+            /*置顶操作*/
+            function qrcode_top(id){
+                layer.prompt({
+                    value: '0',
+                    title: '请输入置顶时间(整数小时)，取消置顶输入0'
+                }, function(value, index, elem){
+                    $.ajax({
+                        type:"post",
+                        data:{type:"top",id:id,time:value},
+                        success:function (data) {
+                            if (data.success){
+                                layer.msg('已置顶!',{icon: 6,time:1000});
+                                history.go(0);
+                            } else{
+                                layer.msg(data.msg,{icon: 2,time:1000});
+                            }
+                        }
+                    })
+                });
+            }
+            /*删除二维码*/
             function qrcode_del(id){
                 layer.confirm('确认要删除吗？',function(index){
                     //发异步删除数据

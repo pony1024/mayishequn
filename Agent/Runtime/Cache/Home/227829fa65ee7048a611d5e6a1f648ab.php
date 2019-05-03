@@ -100,7 +100,7 @@
                     </div>
                     <div class="qr-view-bar">
                         <div class="layui-col-xs3 layui-col-xs-offset3 layui-col-sm3 layui-col-sm-offset3"><i class="layui-icon layui-icon-fire" style="color: #fe6977"></i> <?php echo ($qrcode[see]+1); ?></div>
-                        <div  class="layui-col-xs3 layui-col-sm3"><i class="layui-icon layui-icon-praise <?php if($qrcode[iszan]): ?>iszan<?php endif; ?>"></i> <span class="qr-zan"><?php echo ($qrcode[zan]+1); ?></span></div>
+                        <div  class="layui-col-xs3 layui-col-sm3"><i class="layui-icon layui-icon-praise <?php if($qrcode[iszan]): ?>iszan<?php endif; ?>"></i> <span class="qr-zan"><?php echo ($qrcode[zan]); ?></span></div>
                     </div>
                 </div>
                 <div class="qr-view-info layui-col-xs12 layui-col-sm6">
@@ -137,8 +137,24 @@
             </div>
             <div class="qr-view-left-bottom layui-row">
                 <div class="layui-col-xs12 layui-col-sm12">
-                    <!--PC和WAP自适应版-->
-                    <div id="SOHUCS" ></div>
+                    <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC80NDAzNS8yMDU3MA==">
+                        <script type="text/javascript">
+                            (function(d, s) {
+                                var j, e = d.getElementsByTagName(s)[0];
+
+                                if (typeof LivereTower === 'function') { return; }
+
+                                j = d.createElement(s);
+                                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                                j.async = true;
+
+                                e.parentNode.insertBefore(j, e);
+                            })(document, 'script');
+                        </script>
+                        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
                 </div>
             </div>
         </div>
@@ -223,11 +239,11 @@
             </div>
             <div class="layui-col-sm6">
                 <ul>
-                    <li>关于我们</li>
-                    <li>用户协议</li>
-                    <li>隐私政策</li>
-                    <li>商业合作</li>
-                    <li>联系我们</li>
+                    <li><a href="<?php echo U('About/index',['id'=>'about']);?>">关于我们</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'userbook']);?>">用户协议</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'private']);?>">隐私政策</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'hand']);?>">商业合作</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'service']);?>">联系我们</a></li>
                 </ul>
             </div>
             <div class="layui-col-sm3">

@@ -43,6 +43,10 @@ body{
     border-radius:8px;
     overflow: hidden;
 }
+.layui-carousel>[carousel-item] div img{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
 p.TypeTitle{
     line-height: 48px;
     display: block;
@@ -404,7 +408,9 @@ p.TypeTitle{
     cursor: default;
     color: #fe6977;
 }
-
+#guest{
+    display: none;
+}
 
 @media screen and (max-width: 768px){
     /*.lunbo{

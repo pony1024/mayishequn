@@ -1,0 +1,51 @@
+<div class="qr-head">
+    <div class="qr-user-top">
+        <img src="__PUBLIC__/images/topbg.jpg" class="bg">
+        <div class="qr-user-data layui-hide-xs">
+            <div class="layui-row">
+                <div class="layui-col-md-offset1 layui-col-md1">
+                    <p>二维码</p>
+                    <p>{$userinfo.qrcount}</p>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-md1">
+                    <p>码币</p>
+                    <p>{$userinfo.coin}</p>
+                </div>
+                <div class="layui-col-md-offset4 layui-col-md1">
+                    <p>点赞</p>
+                    <p>{$userinfo.zan}</p>
+                </div>
+                <div class="layui-col-md-offset1 layui-col-md1">
+                    <p>热度</p>
+                    <p>{$userinfo.see}</p></div>
+            </div>
+        </div>
+        <div class="qr-user-info">
+            <img src="__PUBLIC__/images/cover.jpg" class="face">
+            <p class="nickname">{$userinfo.name}</p>
+            <p class="jianjie">{$userinfo.remark}</p>
+            <div class="qr-user-menu">
+                <ul class="layui-nav" style="background: #fff;">
+                    <li class="layui-nav-item index">
+                        <a href="{:U('User/index')}">二维码</a>
+                    </li>
+                    <if condition="$userinfo[id] eq session('memberid')">
+                        <li class="layui-nav-item msg">
+                            <a href="">动态</a>
+                        </li>
+                        <li class="layui-nav-item orders">
+                            <a href="">消费记录</a>
+                        </li>
+                        <li class="layui-nav-item info">
+                            <a href="{:U('User/info')}">设置</a>
+                        </li>
+                    </if>
+                </ul>
+            </div>
+            <script>
+                var action = "{$Think.ACTION_NAME}";
+                document.querySelector(".layui-nav-item."+action).classList.add("layui-this");
+            </script>
+        </div>
+    </div>
+</div>
