@@ -52,10 +52,10 @@
                     <tr>
                         <!--<th><input type="checkbox" name="" value=""></th>-->
                         <th>ID</th>
-                        <th>商户名</th>
+                        <th>昵称</th>
+                        <th>账号</th>
                         <th>余额</th>
                         <th>加入时间</th>
-                        <th>备注</th>
                         <th>状态</th>
                         <th>操作</th>
                     </tr>
@@ -66,25 +66,37 @@
                         <td><?php echo ($vo["id"]); ?></td>
                         <td><u style="cursor:pointer" onclick="member_show('详细信息','<?php echo U('User/show',['id'=>$vo['id']]);?>','10001','400','480')"><?php echo ($vo["name"]); ?></u></td>
                         <td >
-                            <?php if($vo["status"] == 1): ?><b id="balance<?php echo ($vo["id"]); ?>"></b> <u style="cursor:pointer" onclick="balance_show(this,'<?php echo ($vo["id"]); ?>')">显示余额</u>
-                                <?php else: ?>
-                                <u>服务器离线</u><?php endif; ?>
+                            <?php echo ($vo["user"]); ?>
+                        </td>
+                        <td >
+                            <?php echo ($vo["coin"]); ?>
                         </td>
                         <td ><?php echo (date("Y-m-d H:i:s",$vo["createtime"])); ?></td>
-                        <td ><?php echo ($vo["remark"]); ?></td>
                         <td class="td-status">
                             <?php if($vo["status"] == 1): ?><span class="layui-btn layui-btn-normal layui-btn-mini">正常</span>
                                 <?php else: ?>
-                                <span class="layui-btn layui-btn-disabled layui-btn-mini">离线</span><?php endif; ?>
+                                <span class="layui-btn layui-btn-disabled layui-btn-mini">封禁</span><?php endif; ?>
                         </td>
                         <td class="td-manage">
-                            <?php if($vo["status"] == 1): ?><a style="text-decoration:none" onclick="member_topup('<?php echo ($vo["name"]); ?>','<?php echo ($vo["id"]); ?>')" href="javascript:;" title="充值">
+                            <?php if($vo['status'] == '1'): ?><a style="text-decoration:none" onclick="member_stop('<?php echo ($vo["id"]); ?>')" href="javascript:;" title="停用">
+                                    <i class="fa fa-stop-circle" aria-hidden="true"></i>
+                                </a>
+                                <?php else: ?>
+                                <a style="text-decoration:none" onClick="member_start('<?php echo ($vo["id"]); ?>')" href="javascript:;" title="启用">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                </a><?php endif; ?>
+                            <a title="编辑" href="javascript:;" onclick="member_edit('编辑','<?php echo U('User/edit',['id'=>$vo['id']]);?>','4','600','500')"
+                               class="ml-5" style="text-decoration:none">
+                                <i class="layui-icon">&#xe642;</i>
+                            </a>
+                            <a title="删除" href="javascript:;" onclick="member_del('<?php echo ($vo["id"]); ?>')"
+                               style="text-decoration:none">
+                                <i class="layui-icon">&#xe640;</i>
+                            </a>
+                                <a style="text-decoration:none" onclick="member_topup('<?php echo ($vo["name"]); ?>','<?php echo ($vo["id"]); ?>')" class="ml-5" href="javascript:;" title="充值">
                                     <i class="fa fa-money" aria-hidden="true"></i>
                                 </a>
-                                <a title="编辑" href="javascript:;" onclick="member_edit('编辑','<?php echo U('User/edit',['id'=>$vo['id']]);?>','4','600','500')"
-                                class="ml-5" style="text-decoration:none">
-                                    <i class="layui-icon">&#xe642;</i>
-                                </a><?php endif; ?>
+
                         </td>
                     </tr><?php endforeach; endif; ?>
                 </tbody>
@@ -156,26 +168,7 @@
             function member_show(title,url,id,w,h){
                 x_admin_show(title,url,w,h);
             }
-            function balance_show(obj,id){
-                var index = layer.load(1);
-                $.ajax({
-                    type:"post",
-                    data:{id:id},
-                    success:function (data) {
-                        if(data.success){
-                            $("#balance"+id).html(data.msg);
-                            $(obj).html("刷新");
-                            layer.msg("刷新成功！",{icon:6});
-                        }else{
-                            layer.msg(data.msg,{icon:2});
-                        }
-                    },
-                    complete:function () {
-                        layer.close(index);
-                    }
-                })
-            }
-             /*用户-停用*/
+             /*用户-充值*/
             function member_topup(name,id){
                 var html = "<form class=\"layui-form  layui-form-pane\" >" +
                     "<div class=\"layui-form-item\">\n" +
@@ -212,6 +205,7 @@
                             if(data.success){
                                 layer.msg("充值成功",{icon:6})
                                 layer.close(index);
+                                history.go(0);
                             }else{
                                 layer.msg(data.msg,{icon:2})
                             }
@@ -224,14 +218,40 @@
                 });
             }
 
-            /*用户-启用*/
-            function member_start(obj,id){
+            /*停用*/
+            function member_stop(id){
+                layer.confirm('确认要停用吗？',function(index){
+                    $.ajax({
+                        type:"post",
+                        data:{type:"set",id:id,status:"0"},
+                        success:function (data) {
+                            if (data.success){
+                                layer.msg('已停用!',{icon: 5,time:1000});
+                                history.go(0);
+                            } else{
+                                layer.msg(data.msg,{icon: 2,time:1000});
+                            }
+                        }
+                    })
+
+                });
+            }
+
+            /*启用*/
+            function member_start(id){
                 layer.confirm('确认要启用吗？',function(index){
-                    //发异步把用户状态进行更改
-                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="layui-icon">&#xe601;</i></a>');
-                    $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>');
-                    $(obj).remove();
-                    layer.msg('已启用!',{icon: 6,time:1000});
+                    $.ajax({
+                        type:"post",
+                        data:{type:"set",id:id,status:"1"},
+                        success:function (data) {
+                            if (data.success){
+                                layer.msg('已启用!',{icon: 6,time:1000});
+                                history.go(0);
+                            } else{
+                                layer.msg(data.msg,{icon: 2,time:1000});
+                            }
+                        }
+                    })
                 });
             }
             // 用户-编辑
@@ -243,22 +263,23 @@
                 x_admin_show(title,url,w,h);  
             }
             /*用户-删除*/
-            function member_del(obj,id){
+            function member_del(id){
                 layer.confirm('确认要删除吗？',function(index){
                     //发异步删除数据
-                    $(obj).parents("tr").remove();
-                    layer.msg('已删除!',{icon:1,time:1000});
+                    $.ajax({
+                        type:"post",
+                        data:{type:"del",id:id},
+                        success:function (data) {
+                            if (data.success){
+                                layer.msg('已删除!',{icon: 1,time:1000});
+                                history.go(0);
+                            } else{
+                                layer.msg(data.msg,{icon: 2,time:1000});
+                            }
+                        }
+                    })
                 });
             }
             </script>
-            <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
     </body>
 </html>

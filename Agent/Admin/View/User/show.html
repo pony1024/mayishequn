@@ -4,42 +4,38 @@
               <table  class="layui-table" lay-skin="line">
                 <tbody>
                   <tr>
-                    <th  width="80">商户名：</th><td>{$user.name}</td>
+                    <th  width="80">昵称：</th><td>{$user.name}</td>
                   </tr>
                   <tr>
-                    <th>联系方式：</th><td>{$user.contact}</td>
-                  </tr>
-                  <tr>
-                    <th>域名/IP：</th>
-                    <td>{$user.ip}</td>
-                  </tr>
-                  <tr>
-                    <th>端口：</th>
-                    <td>{$user.port}</td>
+                    <th>邮箱：</th><td>{$user.mail}</td>
                   </tr>
                   <tr>
                     <th>账号：</th>
-                    <td>{$user.usr}</td>
+                    <td>{$user.user}</td>
                   </tr>
                   <tr>
-                    <th>费率：</th>
-                    <td>{$user['rate']*1000}‰</td>
+                    <th>密码：</th>
+                    <td>{$user.pwd}</td>
                   </tr>
                   <tr>
-                    <th>累计充值：</th>
-                    <td>{$user.balance_true}</td>
+                    <th>余额：</th>
+                    <td>{$user.coin}</td>
                   </tr>
                   <tr>
-                      <th>余额：</th>
-                      <td>{$user.balance}</td>
+                    <th>最后IP：</th>
+                    <td>{$user.lastip}</td>
                   </tr>
                   <tr>
-                    <th>订单总额：</th>
-                    <td>{$user.orderAmount}</td>
+                    <th>最后登录：</th>
+                    <td>{:date('Y-m-d H:i:s',$user[lasttime])}</td>
                   </tr>
                   <tr>
-                    <th>总手续费：</th>
-                    <td>{$user['orderAmount']*$user['rate']}</td>
+                      <th>注册时间：</th>
+                      <td>{:date('Y-m-d H:i:s',$user[createtime])}</td>
+                  </tr>
+                  <tr>
+                    <th>签名：</th>
+                    <td>{$user.remark}</td>
                   </tr>
                 </tbody>
               </table>

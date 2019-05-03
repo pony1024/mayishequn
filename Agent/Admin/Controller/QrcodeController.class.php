@@ -1,13 +1,7 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller;
 class QrcodeController extends BaseController {
-    public function __construct()
-    {
-        parent::__construct();
-
-
-    }
     public function zan()
     {
         $map["id"] = I('get.id');
@@ -76,41 +70,62 @@ class QrcodeController extends BaseController {
         }
         $this->display();
     }
-    public function qrlist()
+    public function index()
     {
-        $menuid = "";
-        $map = [];
-        if(I('get.app_type')!=""){
-            $map["app_type"] = I('get.app_type');
-            $pagetitle = M('app_type')->where(["id"=>I('get.app_type')])->getField("name");
-            $menuid = M('app_type')->where(["id"=>I('get.app_type')])->getField("menuid");
-            $map["menuid"] = $menuid;
-            $this->assign("pagetitle",$pagetitle);
-        }elseif(I('get.menuid')!=""){
-            $map["menuid"] = I('get.menuid');
-            $menuid = I('get.menuid');
-            $pagetitle = M('menu')->where(["id"=>I('get.menuid')])->getField("name");
-            $this->assign("pagetitle",$pagetitle);
+        if(IS_AJAX){
+            $type = I("post.type");
+            $res["success"] = false;
+            switch($type){
+                case "pass":
+                    $select["id"] = I("post.id");
+                    if($select["id"]!=""){
+                        M("qrcode")->where($select)->setField('status','1');
+                        $res["success"] = true;
+                    }else{
+                        $res["msg"] = "参数错误";
+                    }
+                    break;
+                case "del":
+                    $select["id"] = I("post.id");
+                    if($select["id"]!=""){
+                        M("qrcode")->where($select)->delete();
+                        $res["success"] = true;
+                    }
+                    break;
+                default:
+                    $res["msg"] = "参数错误";
+                    break;
+            }
+            $this->ajaxReturn($res);
         }
-
-        if(I('get.qr_type')){
-            $map["qr_type"] = I('get.qr_type');
+        $map = [];
+        $stime = I("get.stime");
+        $etime = I("get.etime");
+        $username = I("get.username");
+        if($stime!=""&&$etime!=""){
+            $map["create_time"] = ["between",[strtotime($stime),strtotime($etime)]];
+            $this->assign("time",[$stime,$etime]);
+        }
+        if($username!=""){
+            $map["name"] = ["like","%".$username."%"];
+            $this->assign("user",$username);
         }
         $count  = M('qrcode')->where($map)->count();// 查询满足要求的总记录数
         $Page   = new \Think\Page($count,20);// 实例化分页类
         $show   = $Page->show();// 分页显示输出
-        $qrdata = M('qrcode')->where($map)->limit($Page->firstRow.','.$Page->listRows)->order("zan_time desc")->select();
+        $qrdata = M('qrcode')->where($map)->limit($Page->firstRow.','.$Page->listRows)->order("id desc")->select();
         if(sizeof($qrdata)){
             foreach ($qrdata as &$d){
-                $d["nickname"] = M("member")->where(['id'=>$d['memberid']])->getField("name");
-                $d["city"] = M("city")->where(['id'=>$d['city']])->getField("name");
+                $d["user"] = M("member")->where(['id'=>$d['memberid']])->getField("user,name");
+                $d["menu"] = M('menu')->where(["id"=>$d["menuid"]])->getField("name");
+                $d["app_typename"] = M('app_type')->where(["id"=>$d["app_type"]])->getField("name");
+                $d["qr_typename"] = M('qr_type')->where(["id"=>$d["qr_type"]])->getField("name");
+                $d["areaname"] = M("area")->where(['id'=>$d['area']])->getField("name");
+                $d["countryname"] = M("country")->where(['id'=>$d['country']])->getField("name");
+                $d["cityname"] = M("city")->where(['id'=>$d['city']])->getField("name");
+
             }
         }
-        $app_type = M('app_type')->where(["menuid"=>$menuid])->getField("id,name");
-        $qr_type = M('qr_type')->where(["menuid"=>$menuid])->getField("id,name");
-        $this->assign("menuid",$menuid);
-        $this->assign("app_type",$app_type);
-        $this->assign("qr_type",$qr_type);
         $this->assign("qrdata",$qrdata);
         $this->assign("page",$show);
         $this->display();
@@ -166,32 +181,8 @@ class QrcodeController extends BaseController {
                 }
                 $data["create_time"] = time();
                 $data["memberid"] = session('memberid');
-                if($data["toptime"]>0){
-                    if(intval($data["toptime"])==$data["toptime"]){
-                        $price = M('config')->where(['key'=>'price'])->getField('value');
-                        $coin = $price*$data["toptime"];
-                        $data["top_time"] = time()+(intval($data["toptime"])*3600);
-                        M()->startTrans();
-                            $save = M("qrcode")->data($data)->add();
-                            $buy = M('member')->where(['id'=>$data["memberid"]])->setDec('coin',$coin);//扣钱
-                            $balance = M('member')->where(['id'=>$data["memberid"]])->getField('coin');//获取余额
-                        if ($save&&$buy&&$balance>=0){
-                            M()->commit();
-                            $res["success"] = true;
-                        }else{
-                            $res["msg"] = "置顶价格为".$price."码币/小时，您的余额不足";
-                            M()->rollback();
-                        }
-                    }else{
-                        $res["msg"] = "非法参数";
-                    }
-                }elseif($data["toptime"]==0){
-                    M("qrcode")->data($data)->add();
-                    $res["success"] = true;
-                }else{
-                    $res["msg"] = "非法参数";
-                }
-
+                M("qrcode")->data($data)->add();
+                $res["success"] = true;
             }else{
                 $res["msg"] = "非法参数";
             }

@@ -14,7 +14,7 @@ class BaseController extends Controller {
         if(M("manager")->where(["id"=>$userid])->find()["status"]=="0"){
             header("Location:".U('Login/logout'));
         }
-        $username = session("username");
+        $username = session("a_username");
         $role = session("role");//权限组
         $auth = M("auth_role")->where(["id"=>$role])->find()["auth"];//获取权限组信息
 

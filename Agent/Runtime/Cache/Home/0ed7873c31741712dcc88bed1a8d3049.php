@@ -172,11 +172,11 @@
             </div>
             <div class="layui-col-sm6">
                 <ul>
-                    <li>关于我们</li>
-                    <li>用户协议</li>
-                    <li>隐私政策</li>
-                    <li>商业合作</li>
-                    <li>联系我们</li>
+                    <li><a href="<?php echo U('About/index',['id'=>'about']);?>">关于我们</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'userbook']);?>">用户协议</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'private']);?>">隐私政策</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'hand']);?>">商业合作</a></li>
+                    <li><a href="<?php echo U('About/index',['id'=>'service']);?>">联系我们</a></li>
                 </ul>
             </div>
             <div class="layui-col-sm3">

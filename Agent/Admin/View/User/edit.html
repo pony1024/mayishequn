@@ -4,43 +4,34 @@
                 <input type="hidden" name="id" value="{$user.id}">
                 <div class="layui-form-item">
                     <label for="L_name" class="layui-form-label">
-                        <span class="x-red">*</span>商户名
+                        <span class="x-red">*</span>会员名
                     </label>
                     <div class="layui-input-inline">
                         <input type="text" id="L_name" name="name" required="" lay-verify="nickname" disabled
                         autocomplete="off" class="layui-input" value="{$user.name}">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        代理商家标识
-                    </div>
                 </div>
                 <div class="layui-form-item">
                     <label for="L_rate" class="layui-form-label">
-                        <span class="x-red">*</span>费率
+                        <span class="x-red">*</span>邮箱
                     </label>
                     <div class="layui-input-inline">
-                        <input type="number" id="L_rate" name="rate" required="required" lay-verify="rate"
-                               autocomplete="off" class="layui-input" value="{$user['rate']*1000}">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        整数，千分之一则写1
+                        <input type="text" id="L_rate" name="mail" required="required" lay-verify="required"
+                               autocomplete="off" class="layui-input" value="{$user.mail}">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label for="L_contact" class="layui-form-label">
-                        联系方式
+                        <span class="x-red">*</span>密码
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="L_contact" name="contact" required=""
-                               autocomplete="off" class="layui-input" value="{$user.contact}">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        代理联系方式
+                        <input type="text" id="L_contact" name="pwd" required="required" lay-verify="required"
+                               autocomplete="off" class="layui-input" value="{$user.pwd}">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label for="L_remark" class="layui-form-label">
-                        备注
+                        签名
                     </label>
                     <div class="layui-input-inline">
                         <textarea type="text" id="L_remark" name="remark" required="required"
@@ -63,9 +54,6 @@
               ,layer = layui.layer;
             
               //自定义验证规则
-              form.verify({
-                  rate: [/^[1-9][0-9]{0,2}$/, '费率必须为1到999之间的整数']
-              });
 
               //监听提交
               form.on('submit(add)', function(data){

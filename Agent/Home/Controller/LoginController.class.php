@@ -21,7 +21,7 @@ class LoginController extends Controller {
                     session("password",$map["pwd"]);
                     session("lastip",$user["lastip"]);
                     session("lasttime",$user["lasttime"]);
-                    M("manager")->where($map)->save(["lastip"=>$_SERVER["REMOTE_ADDR"],"lasttime"=>time()]);
+                    M("member")->where($map)->save(["lastip"=>$_SERVER["REMOTE_ADDR"],"lasttime"=>time()]);
                     $res["success"] = true;
                 }
             }else{

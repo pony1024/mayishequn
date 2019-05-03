@@ -26,7 +26,7 @@
                     </a>
                     <ul class="layui-nav" lay-filter="">
                       <li class="layui-nav-item">
-                        <a href="javascript:;"><?php echo (session('username')); ?></a>
+                        <a href="javascript:;"><?php echo (session('a_username')); ?></a>
                         <!--<dl class="layui-nav-child"> &lt;!&ndash; 二级菜单 &ndash;&gt;
                           <dd><a href="">个人信息</a></dd>
                           <dd><a href="">切换帐号</a></dd>

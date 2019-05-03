@@ -18,10 +18,10 @@ class LoginController extends Controller {
                 }else{
                     session("userid",$user["id"]);
                     session("role",$user["role"]);
-                    session("username",$user["user"]);
-                    session("password",$map["pwd"]);
-                    session("lastip",$user["lastip"]);
-                    session("lasttime",$user["lasttime"]);
+                    session("a_username",$user["user"]);
+                    session("a_password",$map["pwd"]);
+                    session("a_lastip",$user["lastip"]);
+                    session("a_lasttime",$user["lasttime"]);
                     session("dex",$user["dex"]+1);
                     M("manager")->where($map)->save(["lastip"=>$_SERVER["REMOTE_ADDR"],"lasttime"=>time(),"dex"=>$user["dex"]+1]);
                     $res["success"] = true;
@@ -36,7 +36,7 @@ class LoginController extends Controller {
         $this->display();
     }
     public function logout(){
-        logs("注销","正常",session("username"));
+        logs("注销","正常",session("a_username"));
         session_unset();
         header("Location:".U("Login/index"));
     }

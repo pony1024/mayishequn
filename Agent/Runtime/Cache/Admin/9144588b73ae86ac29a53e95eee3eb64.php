@@ -21,7 +21,7 @@
         <div class="x-body">
             <blockquote class="layui-elem-quote">
                 <p>登录次数：<?php echo (session('dex')); ?> </p>
-                <p>上次登录IP：<?php echo (session('lastip')); ?>  上次登录时间：<?php echo (date("Y-m-d H:i:s",session('lasttime'))); ?></p>
+                <p>上次登录IP：<?php echo (session('a_lastip')); ?>  上次登录时间：<?php echo (date("Y-m-d H:i:s",session('a_lasttime'))); ?></p>
             </blockquote>
 
             <fieldset class="layui-elem-field layui-field-title site-title">
