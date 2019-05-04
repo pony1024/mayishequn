@@ -3,9 +3,10 @@
             <div class="layui-header header header-demo">
                 <div class="layui-main">
                     <a class="logo" href="javascript:;">
-                        易汇通代理商管理系统
+                        {:C('sitename')}管理系统
                     </a>
                     <ul class="layui-nav" lay-filter="">
+                        <li class="layui-nav-item x-index"><a href="{:U('Home/Index/index')}" target="_blank">前台首页</a></li>
                       <li class="layui-nav-item">
                         <a href="javascript:;">{$Think.session.a_username}</a>
                         <!--<dl class="layui-nav-child"> &lt;!&ndash; 二级菜单 &ndash;&gt;
