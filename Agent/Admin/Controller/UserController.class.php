@@ -36,7 +36,7 @@ class UserController extends BaseController {
         $etime = I("get.etime");
         $username = I("get.username");
         if($stime!=""&&$etime!=""){
-            $map["createtime"] = ["between",[strtotime($stime),strtotime($etime)]];
+            $map["createtime"] = ["between",[strtotime($stime),strtotime($etime)+(24*60*60)]];
             $this->assign("time",[$stime,$etime]);
         }
         if($username!=""){

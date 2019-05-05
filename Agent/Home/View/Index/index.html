@@ -14,7 +14,7 @@
 
     <div class="qr-block tuijian layui-row layui-col-space20">
         <foreach name="topdata" item="data">
-            <div class="layui-col-xs6 layui-col-sm3">
+            <div class="layui-col-xs12 layui-col-sm3">
                 <div class="layui-card">
                     <div class="layui-card-body cover">
                         <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
@@ -25,8 +25,8 @@
                         <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
                         <hr>
                         <div class="layui-row">
-                            <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
-                            <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                            <span class="card-username layui-col-xs6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                            <span class="card-date layui-col-xs6">{:datef($data[create_time])}</span>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
         <div class="qr-block layui-row layui-col-space20">
             <if condition="sizeof($vo[data]) gt 0">
                 <foreach name="vo.data" item="data">
-                <div class="layui-col-xs6 layui-col-sm3">
+                <div class="layui-col-xs12 layui-col-sm3">
                     <div class="layui-card">
                         <div class="layui-card-body cover">
                             <a href="{:U('Qrcode/view',['id'=>$data[id]])}"> <img src="{$data.cover}" alt=""></a>
@@ -51,8 +51,8 @@
                             <p class="card-type">{$app_type[$data[app_type]]}-{$qr_type[$data[qr_type]]}</p>
                             <hr>
                             <div class="layui-row">
-                                <span class="card-username layui-col-sm6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
-                                <span class="card-date layui-hide-xs layui-col-sm6">{:datef($data[create_time])}</span>
+                                <span class="card-username layui-col-xs6"><a href="{:U('User/index',['uid'=>$data[memberid]])}"> <i class="layui-icon layui-icon-username"></i>{$data.nickname}</a></span>
+                                <span class="card-date layui-col-xs6">{:datef($data[create_time])}</span>
                             </div>
                         </div>
                     </div>

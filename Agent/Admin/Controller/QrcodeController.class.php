@@ -2,74 +2,6 @@
 namespace Admin\Controller;
 use Think\Controller;
 class QrcodeController extends BaseController {
-    public function zan()
-    {
-        $map["id"] = I('get.id');
-        $res["success"] = false;
-        if($map["id"] != ""){
-            $qrcode = M('qrcode')->where($map)->find();
-            if(sizeof($qrcode)>0){
-                $iszan = iszan($map["id"]);
-                if(!$iszan){
-                    $data['qrid'] = $map["id"];
-                    $data['ip'] = $_SERVER['REMOTE_ADDR'];
-                    $data['memberid'] = session('memberid');
-                    M()->startTrans();
-                    M('qrcode')->where($map)->setInc('zan');
-                    M('qrcode')->where($map)->setField('zan_time',time());
-                    M('zaninfo')->data($data)->add();
-                    M()->commit();
-                    $res["success"] = true;
-                }else{
-                    $res["msg"] = "请不要重复点赞";
-                }
-
-            }else{
-                $res["msg"] = "二维码不存在";
-            }
-        }else{
-            $res["msg"] = "参数错误";
-        }
-        $this.$this->ajaxReturn($res);
-    }
-    public function view()
-    {
-        $map["id"] = I('get.id');
-        $city = "";
-        if($map["id"] != ""){
-            $qrcode = M('qrcode')->where($map)->find();
-            if(sizeof($qrcode)>0){
-                M('qrcode')->where($map)->setInc('see');
-                $city = $qrcode["city"];
-                $qrcode["nickname"] = M("member")->where(['id'=>$qrcode['memberid']])->getField("name");
-                $qrcode["area"] = M("area")->where(['id'=>$qrcode['area']])->getField("name");
-                $qrcode["country"] = M("country")->where(['id'=>$qrcode['country']])->getField("name");
-                $qrcode["city"] = M("city")->where(['id'=>$qrcode['city']])->getField("name");
-                $qrcode["app_type"] = M("app_type")->where(['id'=>$qrcode['app_type']])->getField("name");
-                $qrcode["qr_type"] = M("qr_type")->where(['id'=>$qrcode['qr_type']])->getField("name");
-                $qrcode["menu"] = M("menu")->where(['id'=>$qrcode['menuid']])->getField("name");
-                $qrcode["iszan"] = iszan($map["id"]);
-                $qrdata = M('qrcode')->where(['city'=>$city])->limit(4)->order('rand()')->select();
-                if(sizeof($qrdata)){
-                    foreach ($qrdata as &$d){
-                        $d["nickname"] = M("member")->where(['id'=>$d['memberid']])->getField("name");
-                        $d["city"] = M("city")->where(['id'=>$d['city']])->getField("name");
-                    }
-                }
-                $app_type = M('app_type')->getField("id,name");
-                $qr_type = M('qr_type')->getField("id,name");
-                $this->assign("app_type",$app_type);
-                $this->assign("qr_type",$qr_type);
-                $this->assign("qrdata",$qrdata);
-                $this->assign("qrcode",$qrcode);
-            }else{
-                errmsg("二维码不存在或已删除");
-            }
-        }else{
-            errmsg("参数错误");
-        }
-        $this->display();
-    }
     public function index()
     {
         if(IS_AJAX){
@@ -114,7 +46,7 @@ class QrcodeController extends BaseController {
         $etime = I("get.etime");
         $username = I("get.username");
         if($stime!=""&&$etime!=""){
-            $map["create_time"] = ["between",[strtotime($stime),strtotime($etime)]];
+            $map["create_time"] = ["between",[strtotime($stime),strtotime($etime)+(24*60*60)]];
             $this->assign("time",[$stime,$etime]);
         }
         if($username!=""){
@@ -139,88 +71,6 @@ class QrcodeController extends BaseController {
         }
         $this->assign("qrdata",$qrdata);
         $this->assign("page",$show);
-        $this->display();
-    }
-    public function area()
-    {
-        $menuid = "";
-        $map = [];
-        if(I('get.menuid')!=""){
-            $map["menuid"] = I('get.menuid');
-            $menuid = I('get.menuid');
-            $qr_type = M('qr_type')->where(["menuid"=>$menuid])->select();
-            $this->assign("qr_type",$qr_type);
-        }
-        if(I('get.areaid')!=""){
-            $map["area"] = I('get.areaid');
-        }
-        if(I('get.qr_typeid')!=""){
-            $map["qr_type"] = I('get.qr_typeid');
-        }
-        $count  = M('qrcode')->where($map)->count();// 查询满足要求的总记录数
-        $Page   = new \Think\Page($count,20);// 实例化分页类
-        $show   = $Page->show();// 分页显示输出
-        $qrdata = M('qrcode')->where($map)->limit($Page->firstRow.','.$Page->listRows)->order("zan_time desc")->select();
-        if(sizeof($qrdata)){
-            foreach ($qrdata as &$d){
-                $d["nickname"] = M("member")->where(['id'=>$d['memberid']])->getField("name");
-                $d["city"] = M("city")->where(['id'=>$d['city']])->getField("name");
-            }
-        }
-        $app_type = M('app_type')->getField("id,name");
-        $qr_type = M('qr_type')->getField("id,name");
-        $qr_typemenu = M('qr_type')->where(["menuid"=>$menuid])->select();
-        $this->assign("app_type",$app_type);
-        $this->assign("qr_type",$qr_type);
-        $this->assign("qr_typemenu",$qr_typemenu);
-        $this->assign("qrdata",$qrdata);
-        $this->assign("page",$show);
-        $this->display();
-    }
-    public function create()
-    {
-        checkuser();
-        if(IS_AJAX&&IS_POST){
-            $res["success"] = false;
-            $data = I("post.");
-            unset($data["file"]);
-            if(notnull($data)){
-                if(M('config')->where(['key'=>'review'])->getField('value')=="0"){//判断是否需要审核
-                    $data["status"] = "1";
-                }else{
-                    $data["status"] = "0";
-                }
-                $data["create_time"] = time();
-                $data["memberid"] = session('memberid');
-                M("qrcode")->data($data)->add();
-                $res["success"] = true;
-            }else{
-                $res["msg"] = "非法参数";
-            }
-            $this->ajaxReturn($res);
-        }
-        $qr_type = M('menu')->field('id')->select();
-        foreach ($qr_type as &$item){
-            $submenu = M('qr_type')->where(["menuid"=>$item["id"]])->select();
-            if(sizeof($submenu)){
-                $item['submenu'] = $submenu;
-            }
-        }
-        $area = M('area')->where('pid=0')->select();//获取大区域
-        foreach ($area as &$country){
-            $submenu = M('area')->where(["pid"=>$country["id"]])->select();//获取国家
-            if(sizeof($submenu)){//判断国家是否为空
-                $country['submenu'] = $submenu;
-                foreach ($country['submenu'] as &$city){
-                    $citymenu = M('area')->where(["pid"=>$city["id"]])->select();//获取省份
-                    if(sizeof($citymenu)){//判断省份是否为空
-                        $city['citymenu'] = $citymenu;
-                    }
-                }
-            }
-        }
-        $this->assign("area_submenu",json_encode($area));
-        $this->assign("qr_type",json_encode($qr_type));
         $this->display();
     }
 }

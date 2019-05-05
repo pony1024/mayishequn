@@ -168,7 +168,7 @@
                 data:"username="+$('[name=username]').val()+"&email="+$('[name=email]').val(),
                 success:function(params) {
                     if(params.success){
-                        layer.alert("注册成功",function () {
+                        layer.alert("注册成功,初始密码已发送至您的邮箱，请注意查收",function () {
                             location.href="{:U('Login/index')}"
                         });
                     }else{

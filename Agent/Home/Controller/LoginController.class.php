@@ -59,7 +59,7 @@ class LoginController extends Controller {
                         }
                     }else{
                         $map["pwd"] = rand(400000,999999);
-                        $map["name"] = "小蚂蚁".$map["user"];
+                        $map["name"] = mb_substr("小蚂蚁".$map["user"],0,8);
                         $map["createtime"] = time();
                         $map["status"] = "1";
                         $map["vcode"] = strtoupper(substr(md5($map["mail"].$map["createtime"]),8,16));
